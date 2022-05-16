@@ -1,0 +1,60 @@
+//ondialogresponse
+if(dialogid == 4567)
+	{
+	    if(response)
+	    {
+			switch(listitem)
+			{
+				case 0:
+				{
+			   		if(PlayerInfo[playerid][pLogin] == 0) return true;
+			     	if(PlayerInfo[playerid][pCoin] <= 1) return true;
+					PlayerInfo[playerid][pCoin] -= 1;
+			    	PlayerInfo[playerid][pCash] += 4000000;
+			    	SendClientMessage(playerid,-1,"Tqven Gadmogecat 4kk, -1Coin");
+				}
+				case 1:
+				{
+			    	if(PlayerInfo[playerid][pLogin] == 0) return true;
+			    	if(PlayerInfo[playerid][pCoin] <= 2) return true;
+			    	PlayerInfo[playerid][pCoin] -= 2;
+			    	PlayerInfo[playerid][pCash] += 8000000;
+			    	SendClientMessage(playerid,-1,"Tqven Gadmogecat 8kk, -2Coin");
+				}
+				case 2:
+				{
+			    	if(PlayerInfo[playerid][pLogin] == 0) return true;
+			    	if(PlayerInfo[playerid][pCoin] <= 3) return true;
+			   		PlayerInfo[playerid][pCoin] -= 3;
+			    	PlayerInfo[playerid][pCash] += 12000000;
+			    	SendClientMessage(playerid,-1,"Tqven Gadmogecat 12kk, -3Coin");
+				}
+			}
+		}
+	}
+  
+  
+  //enum pinfo
+  pCoin,
+  
+  
+  //cmdebshi sadme
+CMD:givecoin(playerid, params[])
+{
+	if(PlayerInfo[playerid][pLogin] == 0) return true;
+	if(sscanf(params, "ud",params[0],params[1])) SendClientMessage(playerid,COLOR_WHITE,"Daweret: /givecoin [id Motamashis] [Coin Raodenoba]");
+	if(Developer(playerid))
+	{
+		PlayerInfo[params[0]][pCoin] += params[1];
+		format(YCMDstr, 180, "Tqven Gadaecit Motamashe %s[%d] Coin Raodenobit: %d",Name(params[0]),params[0],params[1]);
+		SendClientMessage(playerid,-1,YCMDstr);
+		format(YCMDstr, 180, "Tqven Gadmogcat Coin Administratorma %s, Raodenobit: %d",Name(playerid),params[1]);
+	}
+	return true;
+}
+CMD:trade(playerid, params[])
+{
+	if(PlayerInfo[playerid][pLogin] == 0) return true;
+	ShowPlayerDialog(playerid, 4567, DIALOG_STYLE_LIST, "Coin Menu, 1 Coin = 4KK", "[1] 1 Coinis Gadacvla 4KK shi\n[2] 2 Coinis Gadacvla 8KK Shi\n[3] 3 Coinis Gadacvla 12KK Shi", "Archeva", "Daxurva"); // < 1 Coinis Fasi Shegidzliat Shecvalot!
+	return true;
+}
